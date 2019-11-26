@@ -1,1 +1,1 @@
-docker build -t name-of-result .
+sudo docker build -t name-of-result .

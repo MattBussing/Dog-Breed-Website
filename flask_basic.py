@@ -58,7 +58,7 @@ def mnist_predict():
             image, np.uint8), cv2.IMREAD_UNCHANGED)
         # makes it (1, 255, 255, 3)
         my_image = np.expand_dims(cv2.resize(arr / 255.0, (256, 256)), axis=0)
-
+        # print(my_image)
         # predict, returns list of a list of probabilities for each class
         # it is just a list
         probabilities = canine_model.predict(my_image)[0]

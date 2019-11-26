@@ -1,5 +1,8 @@
-FROM heroku/heroku:18
+# followed https://github.com/heroku/docker-python/blob/3/Dockerfile
+# FROM heroku/heroku:18
+FROM heroku/miniconda
 
-RUN pip install -U pip
-
-RUN pipenv install
+# install packages
+RUN conda update conda
+ADD conda.yml conda.yml
+RUN conda env create -f conda.yml
