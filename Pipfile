@@ -8,14 +8,14 @@ pylint = "*"
 autopep8 = "*"
 
 [packages]
-scikit-learn = "*"
 matplotlib = "*"
-numpy = "*"
-joblib = "*"
-tensorflow = "*"
-flask = "*"
-opencv-python = "*"
 opencv-contrib-python = "*"
+opencv-python = "*"
+scikit-learn = "*"
+tensorflow = "*"
+numpy = "*"
+pipfile = "*"
+flask = "*"
 
 [requires]
 python_version = "3.7"

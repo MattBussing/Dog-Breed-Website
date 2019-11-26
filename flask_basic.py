@@ -4,7 +4,6 @@ from flask import Flask, jsonify, request, render_template
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.backend import clear_session
-import joblib
 import cv2
 import traceback
 from dogs import dogs

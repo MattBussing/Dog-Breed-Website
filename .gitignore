@@ -2,6 +2,8 @@
 *.joblib
 # models/
 
+# editors
+.v
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
