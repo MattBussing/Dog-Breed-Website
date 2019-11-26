@@ -16,6 +16,7 @@ tensorflow = "*"
 numpy = "*"
 pipfile = "*"
 flask = "*"
+pip = "*"
 
 [requires]
 python_version = "3.7"
