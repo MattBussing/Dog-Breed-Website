@@ -14,10 +14,7 @@ opencv-python = "*"
 scikit-learn = "*"
 tensorflow = "*"
 numpy = "*"
-pipfile = "*"
 flask = "*"
 
 [requires]
 python_version = "3.7"
-pip = "19.3.1"
-
