@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: python flask_basic.py
+  web: source activate dog-breed && python flask_basic.py
