@@ -16,12 +16,15 @@ RUN conda env create -f /tmp/environment.yml
 # load data
 # this is last, since it will likely be the one run over and over
 ADD ./webapp /opt/webapp
-WORKDIR /opt/webapp
+ADD ./wsgi.py /opt/wsgi.py
+WORKDIR /opt
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
 # CMD gunicorn --bind 0.0.0.0:$PORT wsgi
-CMD ["/bin/bash", "-c", "conda run -n dog-breed gunicorn --bind 0.0.0.0:$PORT wsgi"]
+ARG PORT=5000
+ENV PORT=$PORT
+CMD [ "/bin/bash", "-c", "conda run -n dog-breed gunicorn --bind 0.0.0.0:$PORT wsgi"]
 
 ####################### potential
 ###################3

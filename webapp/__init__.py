@@ -6,7 +6,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.backend import clear_session
 import cv2
 import traceback
-from dogs import dogs
+from . import dogs
 
 clear_session()
 app = Flask(__name__)
@@ -89,5 +89,6 @@ def mnist_ui():
 
 
 if __name__ == '__main__':
+    print('start __init__')
     load_mnist_model()
     app.run(debug=True)
