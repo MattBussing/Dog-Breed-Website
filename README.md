@@ -10,9 +10,13 @@ This is the webite for the final project CSCI-470, Intro to Machine Learning.
 
 ## Helpful Commands
 
+Both:
+
+- `sudo docker build --build-arg PORT=5000 -t cute-puppers:latest . && sudo docker run -p 5000:5000 cute-puppers`
+
 Build:
 
-- `sudo docker build -t cute-puppers:latest .`
+- `sudo docker build --build-arg PORT=5000 -t cute-puppers:latest .`
 
 Run:
 
