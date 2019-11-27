@@ -6,23 +6,27 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.backend import clear_session
 import cv2
 import traceback
-from . import dogs
+from webapp.dogs import dogs
 
-clear_session()
-app = Flask(__name__)
+
 canine_model = None
 
 
-def load_mnist_model():
+def load_dog_model():
     global canine_model
-    model_file = 'models/model.hdf5'
+    model_file = 'webapp/models/model.hdf5'
     canine_model = load_model(model_file)
     canine_model._make_predict_function()
 
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+clear_session()
+app = Flask(__name__)
+load_dog_model()
+
+
+# @app.route("/")
+# def hello():
+#     return "Hello World!"
 
 
 @app.route("/variables/<variable>")
@@ -78,17 +82,16 @@ def mnist_predict():
         })
 
 
-@app.route("/canine-ui")
+@app.route("/")
 def canine_ui():
     return render_template("Website.html")
 
 
-@app.route("/canine-ui-old")
-def mnist_ui():
-    return render_template("mnist.html")
+# @app.route("/canine-ui-old")
+# def mnist_ui():
+#     return render_template("mnist.html")
 
 
 if __name__ == '__main__':
     print('start __init__')
-    load_mnist_model()
     app.run(debug=True)

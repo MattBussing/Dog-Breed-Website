@@ -22,6 +22,6 @@ RUN conda env create -f /tmp/environment.yml
 
 # load data
 # this is last, since it will likely be the one run over and over
-ADD ./webapp /opt/webapp
 ADD ./wsgi.py /opt/wsgi.py
+ADD ./webapp /opt/webapp
 WORKDIR /opt
