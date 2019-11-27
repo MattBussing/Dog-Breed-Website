@@ -25,21 +25,3 @@ WORKDIR /opt
 ARG PORT=5000
 ENV PORT=$PORT
 CMD [ "/bin/bash", "-c", "conda run -n dog-breed gunicorn --bind 0.0.0.0:$PORT wsgi"]
-
-####################### potential
-###################3
-
-# Run the image as a non-root user
-# RUN adduser --disabled-password myuser
-# USER myuser
-
-# Expose is NOT supported by Heroku
-# EXPOSE 5000
-
-# RUN apk add --no-cache --update python3 py3-pip bash
-# COPY ./webapp /opt/webapp
-# WORKDIR /opt/webapp
-
-# run the actual app
-# exec makes it so that it will receive SIGINT
-# CMD ["/bin/bash", "-c", "source activate dog-breed && exec python flask_basic.py"]
