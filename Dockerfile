@@ -5,6 +5,13 @@
 FROM continuumio/miniconda3:latest
 MAINTAINER Matt Bussing "mbussing44@gmail.com"
 
+# Run the app.  CMD is required to run on Heroku
+# $PORT is set by Heroku
+# CMD gunicorn --bind 0.0.0.0:$PORT wsgi
+ARG PORT=5000
+ENV PORT=$PORT
+CMD [ "/bin/bash", "-c", "conda run -n dog-breed gunicorn --bind 0.0.0.0:$PORT wsgi"]
+
 # install packages
 RUN conda update conda
 RUN conda -V
@@ -18,10 +25,3 @@ RUN conda env create -f /tmp/environment.yml
 ADD ./webapp /opt/webapp
 ADD ./wsgi.py /opt/wsgi.py
 WORKDIR /opt
-
-# Run the app.  CMD is required to run on Heroku
-# $PORT is set by Heroku
-# CMD gunicorn --bind 0.0.0.0:$PORT wsgi
-ARG PORT=5000
-ENV PORT=$PORT
-CMD [ "/bin/bash", "-c", "conda run -n dog-breed gunicorn --bind 0.0.0.0:$PORT wsgi"]
