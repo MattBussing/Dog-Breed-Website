@@ -10,8 +10,8 @@ MAINTAINER Matt Bussing "mbussing44@gmail.com"
 RUN conda update conda
 
 # install dependencies, this also makes it so that it doesn't reload every time
-ADD conda.yml conda.yml
-RUN conda env create -f conda.yml
+ADD ./bin/conda.yml /tmp/conda.yml
+RUN conda env create -f /tmp/conda.yml
 
 # Run the image as a non-root user
 RUN adduser -D myuser
