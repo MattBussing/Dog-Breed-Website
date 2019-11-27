@@ -8,7 +8,7 @@ MAINTAINER Matt Bussing "mbussing44@gmail.com"
 RUN conda update conda
 
 # install dependencies, this also makes it so that it doesn't reload every time
-ADD ./bin/environment.yml /tmp/environment.yml
+ADD ./environment.yml /tmp/environment.yml
 RUN conda env create -f /tmp/environment.yml
 
 # load data
