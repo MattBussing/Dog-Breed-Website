@@ -6,12 +6,16 @@ MAINTAINER Matt Bussing "mbussing44@gmail.com"
 # install packages
 RUN conda update conda
 
-# load data
-COPY . /app
-WORKDIR /app
-
-# install dependencies
+# install dependencies, this also makes it so that it doesn't reload every time
+ADD conda.yml conda.yml
 RUN conda env create -f conda.yml
 
 # run the actual app
-CMD /bin/bash -c “source activate dog-breed && exec python application.py
+ENTRYPOINT ["/bin/bash", "-c"]
+# exec makes it so that it will receive SIGINT
+CMD ["source activate dog-breed && exec python flask_basic.py"]
+
+# load data
+# this is last, since it will likely be the one run over and over
+COPY . /app
+WORKDIR /app
