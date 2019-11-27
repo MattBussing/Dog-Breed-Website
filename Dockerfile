@@ -11,9 +11,8 @@ ADD conda.yml conda.yml
 RUN conda env create -f conda.yml
 
 # run the actual app
-ENTRYPOINT ["/bin/bash", "-c"]
 # exec makes it so that it will receive SIGINT
-CMD ["source activate dog-breed && exec python flask_basic.py"]
+CMD ["/bin/bash", "-c", "source activate dog-breed && exec python flask_basic.py"]
 
 # load data
 # this is last, since it will likely be the one run over and over
