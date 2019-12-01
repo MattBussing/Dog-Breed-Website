@@ -40,6 +40,10 @@ Logs:
 
 `sudo heroku logs --tail`
 
+Conda:
+
+`conda env update environment.yml`
+
 ## Future Things Todo:
 
 - remove opencv and use more lightweight library
