@@ -67,13 +67,27 @@ def mnist_predict():
         # it is just a list
         probabilities = canine_model.predict(my_image)[0]
         # gets best location
-        location_of_best = probabilities.argmax(axis=-1)
-        # the probability of best
-        best_probability = probabilities[location_of_best]
+        # location_of_best = probabilities.argmax(axis=-1)
+        # # the probability of best
+        # best_probability = probabilities[location_of_best]
+
+        # sort probabilities
+        # pairs keys and values
+        pairs = [(v, i) for i, v in enumerate(probabilities)]
+        # sorts the list on the values
+        my_sorted = sorted(pairs, key=lambda x: x[0], reverse=True)
+        # creates the message
+        message = ''
+        for val, key in my_sorted[:5]:
+            message += "%s - %.2f%%\n" % (dogs[key], val * 100)
 
         return jsonify({
-            "message": "%s - %.2f%% probability" % (dogs[location_of_best], best_probability * 100)
+            "message": message
         })
+
+    # return jsonify({
+    #     "message": "%s - %.2f%% probability" % (dogs[location_of_best], best_probability * 100)
+    # })
 
     except Exception as e:
         print(traceback.format_exc())
